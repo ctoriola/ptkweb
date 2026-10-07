@@ -17,10 +17,14 @@
 /*  01.text animation
 /*----------------------------------------*/
 function initHeadingAnimation() {
+    // Headings already on screen at load stay static so they paint immediately
+    // (no hide-then-animate flash, and no delayed Largest Contentful Paint).
+    var inFirstView = function (el) { return el.getBoundingClientRect().top < window.innerHeight; };
     if($('.text-effect').length) {
 			var textheading = $(".text-effect");
 
 			if(textheading.length === 0) return; gsap.registerPlugin(SplitText); textheading.each(function(index, el) {
+				if (inFirstView(el)) return;
 				
 				el.split = new SplitText(el, { 
 					type: "lines,words,chars",
@@ -58,6 +62,7 @@ function initHeadingAnimation() {
 			   animatedTextElements = document.querySelectorAll('.text-anime-style-1');
 			
 			animatedTextElements.forEach((element) => {
+				if (inFirstView(element)) return;
 				let animationSplitText = new SplitText(element, { type: "chars, words" });
 					gsap.from(animationSplitText.words, {
 					duration: 1,
@@ -78,6 +83,7 @@ function initHeadingAnimation() {
 				 animatedTextElements = document.querySelectorAll('.text-anime-style-2');
 			
 			animatedTextElements.forEach((element) => {
+				if (inFirstView(element)) return;
 				let animationSplitText = new SplitText(element, { type: "chars, words" });
 					gsap.from(animationSplitText.chars, {
 						duration: 1,
@@ -95,6 +101,7 @@ function initHeadingAnimation() {
 			let	animatedTextElements = document.querySelectorAll('.text-anime-style-3');
 			
 			 animatedTextElements.forEach((element) => {
+				if (inFirstView(element)) return;
 				//Reset if needed
 				if (element.animation) {
 					element.animation.progress(1).kill();

@@ -128,7 +128,6 @@
 /*----------------------------------------*/
 /*  1.1 Theme Default
 /*----------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&display=swap");
 :root {
   --primary-color:#ef5b00;
   --secondary-color: #FBFBFB;
@@ -12920,3 +12919,9 @@ input:checked + .slider:before {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Images carry width/height attributes (reserves space, prevents layout shift);
+   keep their aspect ratio when CSS sets only the width. */
+img {
+  height: auto;
+}
