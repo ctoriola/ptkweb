@@ -36,3 +36,16 @@ ErrorDocument 404 /404.html
   RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
   RewriteRule ^index\.html$ / [R=301,L]
 </IfModule>
+
+# Old template pages were removed: send any old links somewhere useful.
+<IfModule mod_alias.c>
+  Redirect 301 /index-2.html /
+  Redirect 301 /index-3.html /
+  Redirect 301 /blog.html /
+  Redirect 301 /blog-classic.html /
+  Redirect 301 /blog-details.html /
+  Redirect 301 /portfolio.html /service.html
+  Redirect 301 /portfolio-details.html /service.html
+  Redirect 301 /award.html /about.html
+  Redirect 301 /testimonial.html /about.html
+</IfModule>

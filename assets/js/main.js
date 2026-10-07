@@ -108,7 +108,8 @@
       $(this).parent().removeClass('active');
     }
   });
-  $('.th-offcanvas-toggle').on('click', function () {
+  $('.th-offcanvas-toggle').on('click', function (e) {
+    e.preventDefault();
     $('.th-offcanvas').addClass('th-offcanvas-open');
     $('.th-offcanvas-overlay').addClass('th-offcanvas-overlay-open');
   });
@@ -132,7 +133,7 @@
   if ($('.count').length > 0) {
     $('.count').counterUp({
       delay: 15,
-      time: 4000,
+      time: 1500,
     });
   }
 });
