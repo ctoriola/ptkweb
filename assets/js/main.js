@@ -92,9 +92,12 @@
       .parent()
       .append('<button class="th-menu-close"><i class="fas fa-chevron-right"></i></button>');
   }
+  // Only items that actually have a submenu toggle it; plain links must navigate.
   var sideMenuList = $(
     '.th-offcanvas-menu nav > ul > li button.th-menu-close, .th-offcanvas-menu nav > ul li.has-dropdown > a',
-  );
+  ).filter(function () {
+    return $(this).siblings('.sub-menu, .th-mega-menu').length > 0;
+  });
   $(sideMenuList).on('click', function (e) {
     e.preventDefault();
     if (!$(this).parent().hasClass('active')) {

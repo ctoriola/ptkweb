@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://primetekssc.ng/sitemap.xml

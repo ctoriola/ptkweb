@@ -11,6 +11,7 @@
 <IfModule mod_mime.c>
   AddType image/webp .webp
   AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
 </IfModule>
 
 # Browser caching. CSS/JS bundles are versioned with ?v=<hash> by tools/build.mjs,
@@ -28,3 +29,10 @@
 </IfModule>
 
 ErrorDocument 404 /404.html
+
+# /index.html duplicates the homepage: send it to / (the canonical URL).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+</IfModule>
