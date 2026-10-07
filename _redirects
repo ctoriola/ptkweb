@@ -1,0 +1,10 @@
+# Netlify / Cloudflare Pages: old template pages were removed.
+/index-2.html            /              301
+/index-3.html            /              301
+/blog.html               /              301
+/blog-classic.html       /              301
+/blog-details.html       /              301
+/portfolio.html          /service.html  301
+/portfolio-details.html  /service.html  301
+/award.html              /about.html    301
+/testimonial.html        /about.html    301

@@ -42,5 +42,5 @@ fonts with the new codepoint added:
 ```sh
 pip install fonttools brotli
 cd assets/fonts
-pyftsubset fa-solid-900.woff2 --unicodes="U+F00D,U+F107,…" --flavor=woff2 --output-file=fa-solid-900-subset.woff2
+pyftsubset fa-solid-900.woff2 --unicodes="U+F00D,U+F107,U+F105,U+F061,U+F002,U+F04B,U+F434,U+E5E9,U+F2F7,U+F233,U+F648,U+F054,U+F062,U+F6EB,U+F071,U+F3ED,U+F66F,U+F275,U+F7C0,U+F46C,U+F1C0,U+F441,U+F023,U+F8AC,U+F085,U+F19D,<new>" --flavor=woff2 --output-file=fa-solid-900-subset.woff2
 ```
