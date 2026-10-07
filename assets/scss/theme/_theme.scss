@@ -132,7 +132,13 @@
 /*  1.1 Theme Default
 /*----------------------------------------*/
 
-@import url($font-url);
+// Fonts are self-hosted in assets/css/fonts.css (no render-blocking Google Fonts @import).
+
+// Images carry width/height attributes (reserves space, prevents layout shift);
+// keep their aspect ratio when CSS sets only the width.
+img {
+  height: auto;
+}
 
 
 *{

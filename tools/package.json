@@ -1,0 +1,14 @@
+{
+  "name": "ptkweb-build",
+  "private": true,
+  "description": "Bundles and minifies the site's CSS/JS. Run `npm install && npm run build` in this folder.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "lightningcss": "^1.29.0",
+    "purgecss": "^7.0.0"
+  }
+}

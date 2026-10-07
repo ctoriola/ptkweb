@@ -9,8 +9,7 @@
 06. Mouse Cursor Animation
 07. popup image
 08. popup video
-09. preloader
-10. Aos Animation
+09. Aos Animation
 
 
 
@@ -97,7 +96,6 @@
     '.th-offcanvas-menu nav > ul > li button.th-menu-close, .th-offcanvas-menu nav > ul li.has-dropdown > a',
   );
   $(sideMenuList).on('click', function (e) {
-    console.log(e);
     e.preventDefault();
     if (!$(this).parent().hasClass('active')) {
       $(this).parent().addClass('active');
@@ -176,68 +174,6 @@
   }
 
   /* ================================
-      Preloader Js Start
-    ================================ */
-
-  function preloader() {
-    $(window).on('load', function () {
-      const svg = document.getElementById('svg');
-      if (!svg) return; // safety check if SVG not found
-
-      const tl = gsap.timeline();
-
-      const curve = 'M0 502S175 272 500 272s500 230 500 230V0H0Z';
-      const flat = 'M0 2S175 1 500 1s500 1 500 1V0H0Z';
-
-      // Animate preloader text (if exists)
-      if ($('.preloader-text').length) {
-        tl.to('.preloader-text', {
-          delay: 0.3,
-          y: -100,
-          opacity: 0,
-          duration: 0.5,
-          ease: 'power2.out',
-        });
-      }
-
-      // Animate SVG wave
-      tl.to(svg, {
-        duration: 0.3,
-        attr: { d: curve },
-        ease: 'power2.in',
-      }).to(svg, {
-        duration: 0.5,
-        attr: { d: flat },
-        ease: 'power2.out',
-      });
-
-      // Slide preloader up and hide
-      tl.to('.preloader', {
-        y: -1500,
-        duration: 0.8,
-        ease: 'power2.inOut',
-      }).set('.preloader', { display: 'none', zIndex: -1 });
-
-      // Animate main hero image
-      if ($('.animated-image').length) {
-        tl.fromTo(
-          '.animated-image',
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-          },
-          '-=0.3',
-        );
-      }
-    });
-  }
-  // Init preloader
-  preloader();
-
-  /* ================================
 		07. popup image
 	================================ */
   $('.popup-image').magnificPopup({
@@ -248,15 +184,6 @@
 	================================ */
   $('.popup-video').magnificPopup({
     type: 'iframe',
-  });
-
-  /* ================================
-		09. preloader
-	================================ */
-  $(window).on('load', function (event) {
-    setTimeout(function () {
-      $('.preloader').fadeToggle();
-    }, 200);
   });
 
   /* ================================
@@ -563,7 +490,7 @@
   }
   hoverItem.forEach((item, i) => {
     item.addEventListener('mousemove', (e) => {
-      setInterval(moveImage(e, item), 100);
+      moveImage(e, item);
     });
   });
 
