@@ -9207,12 +9207,12 @@ p {
 .icon {
   width: 44px;
   height: 44px;
-  background: #7dff4f;
+  background: var(--primary-color);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0f2f26;
+  color: #fff;
 }
 
 .feature-item span {
