@@ -1,0 +1,58 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.17 Gallery
+/*----------------------------------------*/
+
+
+.th-self-area{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.th-self-thumb{
+    & img{
+        border-radius: 32px;
+    }
+}
+
+.th-self-title{
+    margin-top: 49px;
+    font-size: 51px;
+    line-height: 62px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    @media #{$lg,$xs}{
+        margin-top: 30px;
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+.th-brand-wrap-flex-three{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #2C2C2C;
+    border-bottom: 1px solid #2C2C2C;
+    margin-top: 164px; 
+    @media #{$xs}{
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    &-inner{
+        margin-top: 0;
+    }
+}
+
+.th-company-brand{
+    border-right: 1px solid #2C2C2C;
+     padding: 40px 0;
+    &:last-child{
+        border-right: inherit;
+    }
+    @media #{$xs}{
+        border-right: inherit;
+    }
+}

@@ -1,0 +1,465 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  6.1 Footer Style 1
+/*----------------------------------------*/
+
+.th-footer-area{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.th-footer-widget-1{
+    & .th-footer-menu{
+        & ul{
+            & li{
+                display: inline-block;
+                & a{
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-transform: uppercase;
+                    margin-right: 48px;
+                    color: var(--white-color);
+                    transition: .3s;
+                    @media #{$lg}{
+                        margin-right: 23px;
+                    }
+                    @media #{$md}{
+                        margin: 0 24px;
+                    }
+                    @media #{$xs}{
+                        margin: 0 7px;
+                        font-size: 13px;
+                    }
+                    &:hover{
+                        color: var(--primary-color);
+                        transition: .3s;
+                    }
+                }
+            }
+        }
+        &-2{
+            & ul{
+                & li{
+                    & a{
+                        &:hover{
+                            transition: .3s;
+                            color: var(--primary-color-2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.th-footer-social{
+    & ul{
+        & li{
+            display: inline-block;
+            & a{
+                text-transform: uppercase;
+                color: var(--offwhite);
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 600;
+                transition: .3s;
+                margin-left: 48px;
+                position: relative;
+                @media #{$lg}{
+                    margin-left:29px;
+                }
+                @media #{$md}{
+                    margin: 0 24px;
+                }
+                @media #{$xs}{
+                    font-size: 13px;
+                    margin: 0 8px;
+                }
+                &::after{
+                    position: absolute;
+                    content: "";
+                    left: -16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%;
+                    background: var(--offwhite);
+                    @media #{$xs}{
+                        left: -10px;
+                    }
+                }
+                &:hover{
+                    color: var(--primary-color);
+                    transition: .3s;
+                    border-bottom: 1px solid var(--primary-color);
+                    &::after{
+                        background: var(--primary-color);
+                        transition: .3s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// copyright text
+
+.th-copyright-text{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--secondary-color);
+    & a{
+        color: var(--primary-color);
+    }
+    @media #{$md,$xs}{
+        font-size: 13px;
+    }
+    @media #{$xs}{
+       text-align: center;
+    }
+    
+}
+
+.th-copyright-menu{
+    & ul{
+        & li{
+            display: inline-block;
+            & a{
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 400;
+                color: var(--secondary-color);
+                transition: .3s;
+                margin-left: 35px;
+                @media #{$md}{
+                    font-size: 13px;
+                    margin-left: 14px;
+                }
+                @media #{$xs}{
+                    font-size: 13px;
+                    margin: 0 6px;
+                }
+                &:hover{
+                    color: var(--primary-color);
+                    transition: .3s;
+                }
+            }
+        }
+    }
+    @media #{$xs}{
+        text-align: center;
+    }
+}
+
+.th-copyright.mb-40 {
+   @media #{$xs}{
+        margin-bottom: 20px;
+   }
+}
+.th-copyright-menu.mb-40{
+    @media #{$xs}{
+        margin-bottom: 20px;
+   }
+}
+
+.th-footer-widget-2.mb-30 {
+    @media #{$xs}{
+        margin-bottom: 0;
+   }
+}
+
+.th-footer-border {
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    margin: 18px 0;
+}
+
+.th-footer-large-title{
+    font-size: 100px;
+    line-height: 108px;
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+// footer bottom large text animation 
+
+.footer-title {
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-size: 346px;
+    line-height: 1;
+    color: var(--white-color);
+    font-weight: 700;
+    display: inline-block;
+    @media #{$lg}{
+        font-size: 350px;
+    }
+    @media #{$lg}{
+        font-size: 244px;
+    }
+    @media #{$md}{
+        font-size: 182px;
+    }
+    @media #{$xs}{
+        font-size: 90px;
+    }
+    &-2{
+        font-size: 172px;
+        line-height: 108px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 88px;
+        @media #{$xxl}{
+            font-size: 120px;
+            line-height: 108px;
+        }
+        @media #{$lg}{
+            margin-top: 38px;
+            font-size:87px;
+            line-height: 1;
+        }
+        @media #{$md}{
+            margin-top: 30px;
+            font-size:56px;
+            line-height: 1;
+        }
+        @media #{$xs}{
+            margin-top: 30px;
+            font-size:32px;
+            line-height: 1;
+        }
+    }
+}
+.text-scale-anim {
+  white-space: pre-wrap;
+  transform-origin: top left;
+}
+
+.tp-letter-span {
+  display: inline-block;
+}
+
+.tp-word-span {
+  display: inline-block;
+}
+
+// footer style 2 
+
+.th-footer{
+    &-phone{
+        font-size: 72px;
+        line-height: 80px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 16px;
+        display: inline-block;
+        transition: .3s;
+        &:hover{
+            color: var(--primary-color-2);
+            transition: .3s;
+        }
+        @media #{$lg}{
+            font-size: 55px;
+            line-height: 65px;
+        }
+        @media #{$xs}{
+            font-size: 34px;
+            line-height: 44px;
+        }
+    }
+    &-gmail{
+        font-size: 72px;
+        line-height: 80px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        display: inline-block;
+        margin-bottom: 48px;
+        transition: .3s;
+        &:hover{
+            color: var(--primary-color-2);
+            transition: .3s;
+        }
+        @media #{$lg}{
+            font-size: 55px;
+            line-height: 65px;
+        }
+        @media #{$xs}{
+            font-size: 34px;
+            line-height: 44px;
+        }
+    }
+}
+
+.th-footer-logo-area-2{
+    background: var(--black-color);
+    padding-top: 30px;
+}
+
+.th-footer-center-main-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media #{$md,$xs}{
+        flex-direction: column;
+    }
+}
+
+.th-footer-center-main-wrap-copyright{
+    & .th-para{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        color: var(--secondary-color);
+    }
+}
+
+.th-footer-center-main-wrap-copyright {
+   @media #{$md,$xs}{
+        text-align: center; 
+   }
+}
+.th-footer-center-main-wrap-location {
+    @media #{$md,$xs}{
+        text-align: center; 
+   }
+}
+
+.th-footer-center-main-wrap-location{
+    & .th-para1{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        color: var(--secondary-color);
+    }
+    & .th-para{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+}
+
+.th-footer-menu.th-footer-menu-3 ul li a {
+    margin: 0 24px;
+    @media #{$xs}{
+        margin: 0 15px;
+    }
+    &:hover{
+        color: #FF7B00; 
+    }
+}
+
+// footer title 1 
+
+.th-footer-mail-title{
+    font-size: 64px;
+    line-height: 72px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    transition: .3s;
+    &:hover{
+        color: var(--primary-color);
+        transition: .3s;
+    }
+    @media #{$lg}{
+        font-size: 55px;
+        line-height: 65px;
+    }
+    @media #{$md,$xs}{
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
+
+.th-opentowork{
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    color: var(--primary-color);
+    position: relative;
+    text-align: end;
+    @media #{$xs}{
+        text-align: center;
+    }
+    & span{
+        position: relative;
+        height: 8px;
+        width: 8px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 16px;
+        &::after{
+            position: absolute;
+            content: "";
+            border: 1px solid var(--primary-color);
+            padding: 9px;
+            left: -6px;
+            top: -5px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.th-footer-left-logo{
+    margin-bottom: 48px;
+    @media #{$xs}{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+.th-footer-mail-title{
+    margin-bottom: 48px;
+    @media #{$xs}{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+.th-opentowork{
+    margin-bottom: 48px;
+    @media #{$xs}{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+.th-footer-center-main-wrap-copyright{
+    & .th-para{
+        & span{
+            color: #FF7B00;
+        }
+    }
+}
+
+.th-footer-menu-three{
+    text-align: end;
+    @media #{$md,$xs}{
+        text-align: center;
+    }
+    & ul{
+        & li{
+            display: inline-block;
+            margin-left: 48px;
+            @media #{$lg,$md,$xs}{
+                margin: 0 20px;
+            }
+            & a{
+                color: #C1C1C1;
+                font-size: 16px;
+                line-height: 24px;
+                transition: .3s;
+                &:hover{
+                    color: var(--primary-color-3);
+                    transition: .3s;
+                }
+            }
+        }
+    }
+}

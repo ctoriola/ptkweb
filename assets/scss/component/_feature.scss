@@ -1,0 +1,105 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.18 Feature
+/*----------------------------------------*/
+
+
+.th-number-boxwrap{
+    display: flex;
+    align-items: center;
+    &-umber{
+        font-size: 64px;
+        line-height: 72px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-right: 8px;
+    }
+    &-text{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+    @media #{$md,$xs}{
+        display: block;
+    }
+}
+
+.th-achivement-box-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    @media #{$lg}{
+        grid-template-columns: repeat(3,1fr);
+    }
+    @media #{$md}{
+        grid-template-columns: repeat(2,1fr);
+    }
+    @media #{$xs}{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
+.th-single-achivement{
+    border: 1px solid #2C2C2C;
+    padding: 40px 32px;
+    border-radius: 32px;
+    display: flex;
+    transition: .3s;
+    &-title{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        color: var(--secondary-color);
+        transition: .3s;
+        &:hover{
+            color:var(--primary-color-3);
+            transition: .3s;
+        }
+    }
+    &-icon{
+        & span{
+            & img{
+                margin-right: 16px;
+                filter: brightness(0) invert(1);
+                transition: .3s;
+            }
+        }
+    }
+    &-2{
+       border: 1px solid #2C2C2C; 
+    }
+    &:hover{
+        border: 1px solid var(--primary-color-3);
+        transition: .3s;
+        }
+    }
+
+    .th-single-achivement:hover{
+        .th-single-achivement-icon{
+            & span{
+                img{
+                    filter: none;
+                    transition: .3s;
+                }
+            }
+        }
+    }
+
+.th-single-achivement:nth-child(1) {
+    border: 1px solid transparent;
+}
+
+.th-single-achivement:nth-child(3) {
+    border: 1px solid transparent;
+}
+
+.th-single-achivement:nth-child(6) {
+    border: 1px solid transparent;
+}
+.th-single-achivement:nth-child(8) {
+    border: 1px solid transparent;
+
+}
+

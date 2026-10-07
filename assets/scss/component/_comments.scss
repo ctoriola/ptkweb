@@ -1,0 +1,125 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.20 Comments
+/*----------------------------------------*/
+
+.th-blog-details-comment-wrap{
+    & .th-comment-title{
+        color: #FBFBFB;
+        font-size: 32px;
+        line-height: 40px;
+        transition: .3s;
+        position: relative;
+        font-weight: 700;
+        padding-bottom: 12px;
+        &::after{
+            position: absolute;
+            content: "";
+            height: 3px;
+            width: 80px;
+            left: 0;
+            bottom: 0;
+            border-radius: 64px;
+            background: #DEFF00;
+        }
+    }
+}
+
+.reply-btn{
+    display: inline-block;
+    background: #DEFF00;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    padding: 6px 25px;
+    border-radius: 78px;
+    text-transform: uppercase;
+    &-2{
+        color: #FBFBFB;
+        border: 1px solid #2F2F2F;
+        background: #121212;
+        &:hover{
+            color: #DEFF00;
+        }
+    }
+}
+
+.th-coment-date-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media #{$xs}{
+        flex-direction: column;
+    }
+    & .th-date{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #B4B2B2;
+        @media #{$xs}{
+            margin-bottom: 12px;
+        }
+    }
+}
+
+.ml-135{
+    margin-left: 135px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+    }
+}
+
+.th-single-form{
+    & .th-balel-title{
+        color: #FFFFFF;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 600;
+        padding-bottom: 12px;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        height: 60px;
+        font-size: 16px;
+        line-height: 24px;
+        color: #BCBCBC;
+        font-weight: 400;
+        border-radius: 8px;
+        background: #121212;
+        border: transparent;
+        &::placeholder{
+            font-size: 16px;
+            line-height: 24px;
+            color: #BCBCBC; 
+        }
+    }
+    textarea{
+        height: 128px;
+    }
+    &-2{
+        input[type="text"],
+        input[type="email"],
+        textarea{
+            background: #0E0E0E;
+            height: 64px;
+        }
+        textarea{
+            height: 150px;
+        }
+    }
+}
+
+.th-fact-content-wrap-2{
+    & .th-section-title{
+        & .th-para{
+            color: #B4B2B2;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #2C2C2C;
+    }
+}

@@ -1,0 +1,369 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.14 iconbox
+/*----------------------------------------*/
+
+
+.th-circle-box-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media #{$md}{
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    @media #{$xs}{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    &-singlebox{
+        background: var(--black-bg);
+        height: 320px;
+        width: 320px;
+        border-radius: 50%;
+        border: 1px solid #2C2C2C;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: .3s;
+        @media #{$xs}{
+            height: 352px;
+            width: 100%;
+        }
+        & .title{
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            transition: .3s;
+            &:hover{
+                color: var(--primary-color);
+                transition: .3s;
+            }
+        }
+        &:nth-child(2) {
+            margin-left: -35px;
+            position: relative;
+            z-index: 2;
+            @media #{$md,$xs}{
+                margin-left: 0;
+            }
+        }
+        &:nth-child(3) {
+            margin-left: -45px;
+            margin-top: 48px;
+            @media #{$md,$xs}{
+                margin-left: 0;
+                margin-top: 0;
+            }
+        }
+        &:nth-child(1) {
+            position: relative;
+            z-index: 3;
+            margin-top: 48px;
+            @media #{$md,$xs}{
+                margin-top: 0;
+            }
+        }
+        &:hover{
+            transform: translateY(-5px);
+            transition: .3s;
+        }
+    }
+}
+
+// service icon box
+.th-service-iconbox{
+    background: var(--black-bg);
+    padding: 48px 40px;
+    border-radius: 16px;
+    border: 1px solid #2F2F2F;
+    transition: .3s;
+    @media #{$md}{
+        padding: 30px 24px;
+    }
+    & .th-icon{
+        background: var(--black-color);
+        height: 72px;
+        width: 72px;
+        line-height: 72px;
+        text-align: center;
+        border-radius: 50%;
+        display: inline-block;
+        transition: .3s;
+        & img{
+            transition: .3s;
+        }
+    }
+    & .th-title{
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        transition: .3s;
+        @media #{$md}{
+            font-size: 17px;
+        }
+        @media #{$xs}{
+            font-size: 20px;
+        }
+
+        &:hover{
+            color: var(--primary-color);
+            transition: .3s;
+        }
+    }
+    & .th-desc{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: var(--text-color);
+    }
+    & .th-more-btn{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 500;
+        color: var(--secondary-color);
+        transition: .3s;
+        display: inline-block;
+        border-bottom: 1px solid var(--secondary-color);
+        &:hover{
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--primary-color);
+            transition: .3s;
+        }
+    }
+    &:hover{
+        transition: .3s;
+        border: 1px solid var(--primary-color);
+        & .th-icon {
+            transition: .3s;
+            transform: rotateY(180deg);
+            background: var(--primary-color);
+            & img{
+                filter: brightness(0);
+            }
+        }
+    }
+}
+
+
+.th-service-thumb{
+    & img{
+        height: 352px;
+        border-radius: 16px;
+        @media #{$md}{
+            height: 340px;
+        }
+    }
+}
+
+.th-num{
+    font-size: 100px;
+    line-height: 108px;
+    font-weight: 700;
+    color: var(--primary-color);
+    transition: .3s;
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+    transition: .3s;
+    opacity: 0;
+    &-2{
+        right: 40px;
+        text-align: right;
+    }
+}
+
+.th-serviceboxwrap{
+    &:hover{
+        .th-num{
+            bottom: 24px;
+            transition: .3s;
+            opacity: 1;
+            &-2{
+                text-align: right;
+            }
+        }    
+    }
+}
+
+
+// skill icon box 
+
+.th-single-counter{
+    background: var(--black-bg);
+    transition: .3s;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    & .th-icon{
+        & span{
+            background: var(--black-color);
+            height: 77px;
+            width: 77px;
+            line-height: 83px;
+            text-align: center;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 16px;
+            & img{
+                transition: .3s;
+            }
+        }
+    }
+    & .th-content{
+        display: flex;
+        align-items: center;
+        & .th-nun{
+            font-size: 56px;
+            line-height: 64px;
+            font-weight: 700;
+            color: var(--white-color);
+            transition: .3s;
+        }
+        & .th-symbol{
+            font-size: 56px;
+            line-height: 64px;
+            font-weight: 700;
+            color: var(--white-color);
+            transition: .3s; 
+        }
+    }
+}
+
+.th-counter-numflex{
+    & .th-para{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: var(--text-color);
+        transition: .3s;
+    }
+}
+
+.th-counter-mt-160{
+    margin-top: 159px;
+    @media #{$lg,$md,$xs}{
+        margin-top: 0;
+    }
+}
+
+
+// service inner icon box 
+
+.th-service-icnbox{
+    border: 1px solid #2F2F2F;
+    transition: .3s;
+    background: #121212;
+    padding: 40px;
+    border-radius: 16px;
+    &-flex-2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+    &-content{
+       & .th-right-title{
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #B4B2B2;
+            transition: .3s;
+        } 
+    }
+    &-icon{
+        & span{
+            height: 56px;
+            width: 56px;
+            line-height: 56px;
+            background: #0E0E0E;
+            display: inline-block;
+            text-align: center;
+            transition: .3s;
+            border-radius: 50%;
+            & img{
+                transition: .3s;
+            }
+        }
+    }
+    &-title{
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        color: #FBFBFB;
+        transition: .3s;
+        padding-bottom: 8px;
+        @media #{$md,$xs}{
+            font-size: 20px;
+        }
+        &:hover{
+            color: #DEFF00;
+            transition: .3s;
+        }
+    }
+    &-para{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #B4B2B2;
+        padding-bottom: 32px;
+    }
+    &:hover{
+        border: 1px solid #DEFF00;
+        transition: .3s;
+    }
+}
+
+
+
+.th-service-arrow-icon{
+    & .th-arrow-bg{
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background: #0E0E0E;
+        display: inline-block;
+        border-radius: 50%;
+        text-align: center;
+        transition: .3s;
+        margin-right: 12px;
+        & img{
+            transition: .3s;
+        }
+    }
+    & .th-arrow-content{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #FBFBFB;
+        transition: .3s;
+    }
+}
+
+.th-service-icnbox:hover{
+    .th-service-icnbox-icon span {
+        background: #DEFF00;
+        transition: .3s;
+        & img{
+            filter: brightness(0);
+            transition: .3s;
+        }
+    }
+    & .th-service-arrow-icon{
+        & .th-arrow-bg{
+            background: #DEFF00;
+            transition: .3s;
+            & img{
+                filter: brightness(0);
+                transition: .3s;
+            }
+        }
+        & .th-arrow-content{
+            border-bottom: 1px solid #FBFBFB;
+            transition: .3s;
+        }
+    }
+}

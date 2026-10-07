@@ -1,0 +1,87 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.16 Progress
+/*----------------------------------------*/
+
+.progress-circle1 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--vl-text-7);
+  background: conic-gradient(#042C33 var(--percent), #e6e6e6 0);
+
+  &-4{
+    background: var(--vl-text-19);
+  }
+  &-5{
+    background: #775BED;
+  }
+}
+
+.progress-circle1{
+  &::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  &-4{
+    &::before{
+      background: #03070C;
+    }
+  }
+}
+
+.progress-circle1 span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Percentage Helpers */
+.progress-96 { --percent: 345deg; }
+.progress-97 { --percent: 349deg; }
+.progress-80 { --percent: 288deg; }
+.progress-75 { --percent: 270deg; }
+
+
+.vl-progress-title{
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    color: var(--vl-text-7);
+    font-family: var(--vl-fonts-figtree);
+    padding-bottom: 14px;
+    &-4{
+      color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+.vl-text-muted{
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--vl-text-6);
+    &-4{
+      color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.margin-bottom-xs{
+    @media #{$xs}{
+        margin-bottom: 20px;
+    }
+}
+
+.progress-circle1-4{
+  & span{
+    color: var(--vl-white);
+  }
+}

@@ -1,0 +1,24 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.11 Error css
+/*----------------------------------------*/
+
+.th-error-content{
+    & .th-tuitle{
+        font-size: 56px;
+        line-height: 64px;
+        font-weight: 700;
+        color: #FFFFFF;
+        @media #{$md,$xs}{
+            font-size: 30px;
+            line-height: 35px;
+        }
+    }
+    & .th-para{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        color: #B4B2B2;
+    }
+}

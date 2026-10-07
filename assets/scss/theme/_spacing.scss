@@ -1,0 +1,96 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  1.3 Default Spacing
+/*----------------------------------------*/
+
+/*--
+    - Margin & Padding
+-----------------------------------------*/
+/*-- Margin Top --*/
+@for $i from 1 through 120 {
+    .mt-#{1 * $i}{margin-top: 1px * $i;}
+}
+/*-- Margin Bottom --*/
+@for $i from 1 through 120 {
+    .mb-#{1 * $i}{margin-bottom: 1px *$i;}
+}
+/*-- Margin Left --*/
+@for $i from 1 through 120 {
+    .ml-#{1 * $i}{margin-left: 1px * $i;}
+}
+
+/*-- Margin Right --*/
+@for $i from 1 through 120 {
+    .mr-#{1 * $i}{margin-right: 1px *$i;}
+}
+
+/*-- Padding Top --*/
+@for $i from 1 through 120 {
+    .pt-#{1 * $i}{padding-top: 1px *$i;}
+}
+
+/*-- Padding Bottom --*/
+@for $i from 1 through 120 {
+    .pb-#{1 * $i}{padding-bottom: 1px *$i;}
+}
+
+/*-- Padding Left --*/
+@for $i from 1 through 120 {
+    .pl-#{1 * $i}{padding-left: 1px *$i;}
+}
+
+/*-- Padding Right --*/
+@for $i from 1 through 120 {
+    .pr-#{1 * $i}{padding-right: 1px *$i;}
+}
+
+
+
+.pt-120{
+    @media #{$lg,$md,$xs}{
+        padding-top: 60px;
+    }
+}
+
+.pb-90{
+    @media #{$lg,$md,$xs}{
+        padding-bottom: 30px;
+    }
+}
+
+.mr-14{
+    @media #{$xs}{
+        margin-right: 0;
+    }
+}
+
+.mb-60{
+    @media #{$md,$xs}{
+        margin-bottom: 30px;
+    }
+}
+
+.ml-80{
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+    }
+}
+
+.mr-80{
+    @media #{$lg,$md,$xs}{
+        margin-right: 0;
+    }
+}
+
+.pb-100{
+    @media #{$md,$xs}{
+        padding-bottom: 50px;
+    }
+}
+
+.ml-30{
+    @media #{$md,$xs}{
+        margin-left: 0;
+    }
+}

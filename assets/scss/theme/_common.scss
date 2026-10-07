@@ -1,0 +1,159 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  1.2 Common Classes
+/*----------------------------------------*/
+
+ul{
+	& li{
+		list-style: none;
+	}
+}
+
+p{
+	margin: 0;
+	padding: 0;
+}
+.w-img{
+	& img{
+		width: 100%;
+	}
+}
+.m-img{
+	& img{
+		max-width: 100%;
+	}
+}
+
+.th-upper{
+	text-transform: uppercase;
+}
+.br{
+	&-16{
+		border-radius: 16px;
+	}
+	&-20{
+		border-radius: 20px;
+	}
+}
+
+.fix {
+    overflow:hidden
+}
+.clear{
+    clear: both;
+}
+
+.z-index-1{
+	z-index: 1;
+}
+
+.z-index-11{
+	z-index: 11;
+}
+
+.overflow-y-visible{
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+.overflow-x-visible{
+	overflow-x: visible;
+	overflow-y: hidden;
+}
+
+.p-relative{
+	position: relative;
+}
+.p-absolute{
+	position: absolute;
+}
+
+.th-black-bg{
+	background: var(--black-bg);
+}
+
+
+
+
+// common border five
+
+.vl-cmon-brd{
+	border-top: 1px solid var(--vl-text-23);
+	border-right: 1px solid var(--vl-text-23);
+	border-left: 1px solid var(--vl-text-23);
+	border-bottom: 1px solid var(--vl-text-23);
+	&-2{
+		border-top:transparent;
+	}
+}
+
+
+.tp-slide-transtion {
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+}
+.tp-brand-slide-element {
+	width: auto;
+	display: inline-block;
+}
+
+.tp-brand-area-1 {
+    transform: rotate(-2.92deg) translateY(64px);
+	@media #{$lg,$md,$xs}{
+       transform: rotate(0) translateY(0);
+    }
+	&-2{
+		 transform: rotate(0deg) translateY(64px);
+	}
+}
+
+.tp-brand-area-2{
+    transform: rotate(2.77deg) translateY(-61px);
+	@media #{$lg,$md,$xs}{
+       transform: rotate(0) translateY(0) !important;
+    }
+	&-2{
+		transform: rotate(5.77deg) translateY(-14px);
+	}
+}
+
+
+
+.th-brand-height-214{
+    height: 234px;
+}
+
+.th-brand-height-394{
+    height: 394px;
+}
+
+
+.th-margin-top-2 {
+    margin-top: -64px;
+}
+
+
+.th-orange-bg{
+	background: var(--primary-color-3);
+}
+.th-gray-bg{
+	background: var(--secondary-color);
+}
+
+.th-blue-bg{
+	background: #4C40F7;
+}
+
+.th-mb-48-flex{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 48px;
+	@media #{$xs}{
+		flex-direction: column;
+		margin-bottom: 30px;
+	}
+}
+
+
+// common bg color

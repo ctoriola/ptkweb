@@ -1,0 +1,70 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.13 Documentation  
+/*----------------------------------------*/
+
+
+.vl-into{
+    border-bottom:1px solid #DFE0E4;
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    & .title{
+        color: var(--vl-black);
+        font-size: 44px;
+        line-height: 52px;
+        font-weight: 400;
+        @media #{$md,$xs}{
+            font-size: 30px;
+            line-height: 40px;
+        }
+    }
+    & .para{
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 500;
+        color: var(--vl-text-2);
+    }
+    & ul{
+        & li{
+            & img{
+                margin-right: 8px;
+            }
+            width: 50%;
+            float: left;
+            margin-bottom: 16px;
+            color: var(--vl-text-2);
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 500;
+            @media #{$md,$xs}{
+                width: 100%;
+                float: inherit;
+            }
+        }
+    }
+    &-2{
+        & ul{
+            & li{
+                float: inherit;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.vl-doc-ck{
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+    color: var(--vl-black);
+    transition: .3s;
+}
+
+.vl-intobg{
+    & img{
+        border-radius: 20px;
+        height: 396px;
+        object-fit: cover
+    }
+}

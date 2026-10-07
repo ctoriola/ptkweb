@@ -1,0 +1,103 @@
+@use '../utils' as *; 
+
+/*----------------------------------------*/
+/*  2.12 Accordion
+/*----------------------------------------*/
+
+.vl-faqs3{
+    & .vl-accordion-item{
+        position: relative;
+        z-index: 1;
+        background: #0E0E0E;
+        border-radius: 8px;
+        margin-bottom: 32px;
+        & .vl-accordion-button{
+            color: #FBFBFB;
+            font-size: 20px;
+            line-height:28px;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+            padding: 20px 24px;
+            padding-bottom: 0;
+            &.collapsed {
+                background: #0E0E0E;
+                border: 1px solid #DEFF00;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.09);
+                color: #FBFBFB;
+                border: 1px solid var(--vl-text-42);
+                span.vl-faqarrow {
+                        position: absolute;
+                        right: 32px;
+                        top: 21px;
+                        color: var(--vl-white);
+                        height: 24px;
+                        width: 24px;
+                        line-height: 29px;
+                        text-align: center;
+                        border-radius: 50px;
+                        font-size: 16px;
+                        transition: 0.3s;
+                        height: 40px;
+                        width: 40px;
+                        line-height: 45px;
+                        background: #121212;
+                        transform: rotate(-45deg);
+                        @media #{$xs}{
+                            right: 6px;
+                        }
+                }
+            }
+            span.vl-faqarrow {
+                position: absolute;
+                right: 32px;
+                top: 18px;
+                height: 24px;
+                width: 24px;
+                text-align: center;
+                border-radius: 50px;
+                font-size: 18px;
+                line-height: 29px;
+                transition: 0.3s;
+                height: 40px;
+                width: 40px;
+                line-height: 45px;
+                transform: rotate(45deg);
+                background:#DEFF00;
+                color: #0E0E0E;
+                @media #{$xs}{
+                    right: 6px;
+                }
+            }
+        }
+        .vl-accordion-body .para {
+            padding-right: 24px;
+            padding-bottom: 24px;
+            color: #B4B2B2;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            border-top: 1px solid #2C2C2C;
+            margin-top: 16px;
+            padding-top: 16px;
+            margin: 0 24px;
+            margin-top: 16px;
+        }
+    }
+
+    /* remove all borders */
+.vl-accordion-item{
+  border: none;
+  margin-bottom:15px;
+}
+
+/* only active item border */
+.vl-accordion-item:has(.accordion-collapse.show){
+  border: 1px solid #DEFF00;
+  border-radius:8px;
+}
+}
+
+

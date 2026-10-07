@@ -1,0 +1,473 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.5 CTA css
+/*----------------------------------------*/
+
+.vl-cta-bg{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    border-radius: 40px;
+    @media #{$xs}{
+        padding: 28px;
+        border-radius: inherit;
+    }
+    &-5{
+        padding-top: 80px;
+        padding-bottom: 120px;
+    }
+}
+
+.vl-cta-shape-left {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+}
+
+.vl-cta-shape-right {
+    position: absolute;
+    top: 70px;
+    left: auto;
+    right: 50px;
+}
+
+.vl-cta-area-wrap {
+    margin-top: -100px;
+    &-5{
+        margin-top: -160px;
+    }
+}
+.vl-cta-content {
+    position: relative;
+    z-index: 1;
+    &-3{
+        margin-right: 20px;
+        @media #{$lg,$md,$xs}{
+            margin-right: 0;
+        }
+    }
+}
+
+.vl-cta-area-wrap-2{
+    background: var(--vl-theme-sec-color);
+}
+
+// cta style 2
+
+.vl-cta-content-2{
+    &-desc{
+        color: rgba(255, 255, 255, 0.9);
+        font-style: 500;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+}
+
+.vl-cta-area-wrap-2{
+    padding-top: 80px;
+    padding-bottom: 160px;
+    position: relative;
+    z-index: 1;
+}
+
+.vl-cta-content-2 {
+    margin-right: 45px;
+    @media #{$lg,$md,$xs}{
+        margin-right: 0;
+    }
+}
+
+.vl-download-app2{
+    display: flex;
+    margin-top: 32px;
+    & .app1{
+        margin-right: 16px;
+    }
+}
+
+.vl-cta-shape2{
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+
+// cta style three 
+
+.vl-cta-area-wrap-three{
+    border-radius:40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    z-index: 1;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+// cta icon box style 
+
+
+.vl-cta-iconbox3 {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 35px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+    }
+}
+
+
+
+
+.vl-iconbox-wrap3{
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    padding-right: 54px;
+    &-icon{
+        & span{
+            background: var(--vl-text-5);
+            height: 52px;
+            width: 52px;
+            line-height: 52px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: center;
+            margin-right: 8px;
+        }
+    }
+    &-title{
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 600;
+        color: var(--vl-white);
+        font-family: var(--vl-fonts-figtree);
+    }
+}
+
+
+// feature iconbox 
+
+.feature-wrap {
+    margin-left: 40px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+    }
+}
+
+
+.feature-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+  @media #{$xs}{
+    display: block;
+    margin-bottom: 0;
+  }
+}
+
+.feature-center {
+  display: flex;
+  justify-content: center;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  min-width: 320px;
+  @media #{$xs}{
+    min-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.feature-center .feature-item {
+  min-width: 420px;
+  @media #{$xs}{
+    min-width: 100%;
+  }
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  background: #7dff4f;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f2f26;
+}
+
+
+
+.feature-item span {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// cta style 4 
+
+.vl-cta-form4{
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+         @media #{$lg,$md,$xs}{
+            width: 100%;
+        }
+    margin-bottom: 100px;
+    & input{
+        height: 72px;
+        border-radius: 16px;
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 1);
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 500;
+        color: var(--vl-text-21);
+        &::placeholder{
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 500;
+            color: var(--vl-text-21);    
+        }
+    }
+    &-btn{
+        position: absolute;
+        right: 4px;
+        top: 4px;
+    }
+    &-footer{
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+// cta style 6 
+
+.vl-cta-area-wrap6 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+    border-radius: 60px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: -182px;
+    position: relative;
+    @media #{$lg,$md}{
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: inherit;
+    }
+    @media #{$xs}{
+        padding: 30px 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: inherit;
+    }
+}
+
+.vl-cta-thumb-6 {
+    position: absolute;
+    top: -188px;
+    right: 0;
+    @media #{$lg,$md,$xs}{
+       top:0;
+       position: relative;
+    }
+}
+
+.vl-cta-thumb-6 img {
+    height: 477px;
+    @media #{$lg,$md}{
+        height: 244px;
+        float: right;
+    }
+    @media #{$xs}{
+        margin-top: 30px;
+        height: 333px;
+        float: inherit;
+    }
+}
+
+
+// vl top cta
+
+.vl-top-ctabg7{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.vl-cta-content{
+    &-8{
+        margin-right: 40px;
+        @media #{$lg,$md,$xs}{
+            margin-right: 0;
+        }
+    }
+}
+
+.vl-cta-thumb8{
+    margin-left: 100px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+    }   
+}
+
+.vl-cta-thumb8{
+    position: absolute;
+    bottom: -68px;
+    right: 0;
+    @media #{$xs}{
+        position: relative;
+        bottom: 0;
+    }
+}
+
+.vl-cta-thumb8 img {
+   @media #{$xs}{
+       height: 371px;  
+       margin-top: 20px;
+   }
+}
+
+
+// cta style 9 
+
+.vl-cta-area-wrap9{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.vl-ctaflex9{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    @media #{$xs}{
+        display: block;
+    }
+    & a{
+        @media #{$xs}{
+            margin-bottom: 20px;
+            display: block;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.vl-cta-content-9{
+    & .subtitle9{
+        color: var(--vl-white);
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 600;
+        border: 1px solid #7E68C5;
+        padding: 10px 12px;
+        border-radius: 80px;
+        display: inline-block;
+    }
+}
+
+.vl-cta-area-wrap9{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-radius: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+.vl-cta-shape9-thumb{
+    &-1{
+        position: absolute;
+        top:0;
+    }
+    &-2{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+
+// cta style 10
+
+.vl-cta-area-wrap10{
+    background: var(--vl-text-43);
+    position: relative;
+    z-index: 1;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    border-radius: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+    @media #{$lg,$md,$xs}{
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: inherit;
+    }
+    @media #{$xs}{
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+
+}
+
+.vl-cta-content-10{
+    & .vl-section-title10{
+        & .title{
+            font-size: 44px;
+            line-height: 52px;
+            font-weight: 400;
+            color: var(--vl-white);
+            @media #{$xs}{
+                font-size: 28px;
+                line-height: 30px;
+            }
+        }
+        & .para{
+            font-size: 18px;
+            line-height: 18px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+}
+
+.vl-cta-thumb10{
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    @media #{$xs}{
+        position: relative;
+        bottom: 0;
+        margin-top: 30px;
+    }
+}

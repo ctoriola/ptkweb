@@ -1,0 +1,95 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.6 Mouse 
+/*----------------------------------------*/
+
+.cursor-outer {
+  margin-inline-start: -12px;
+  margin-top: -12px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  box-sizing: border-box;
+  z-index: 10000000;
+  opacity: 0.34;
+  transition: all 0.4s ease-out 0s;
+}
+
+.cursor-outer.color-10 {
+  border: 1px solid #333; 
+}
+.cursor-outer.color-5 {
+  border: 1px solid #7557ED; 
+}
+.cursor-outer.color-2 {
+  border: 1px solid var(--primary-color-2); 
+}
+.cursor-outer.color-3 {
+  border: 1px solid var(--primary-color-3);
+}
+
+.cursor-outer.cursor-hover {
+  opacity: 0.14;
+}
+
+.cursor-outer.cursor-big {
+  opacity: 0;
+}
+
+.mouseCursor {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translateZ(0);
+  visibility: hidden;
+  text-align: center;
+} 
+
+.mouseCursor.cursor-big {
+  width: 20px;
+  height: 20px;
+  margin-inline-start: -12px;
+  margin-top: -12px;
+}
+
+.cursor-inner {
+  margin-inline-start: -3px;
+  margin-top: -3px;
+  width: 10px;
+  height: 10px;
+  z-index: 10000001;
+  background-color:var(--primary-color);
+  opacity: 1;
+  transition: all 0.24s ease-out 0s;
+}
+
+.cursor-inner.color-5 {
+  background-color: #846BED;
+}
+.cursor-inner.color-2 {
+  background-color: var(--primary-color-2);
+}
+.cursor-inner.color-3 {
+  background-color: var(--primary-color-3);
+}
+
+.cursor-inner.cursor-big span {
+  opacity: 1;
+}
+
+.cursor-inner.cursor-hover {
+  margin-inline-start: -10px;
+  margin-top: -10px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--vkl-text-text-2); /* $theme-color */
+  border: 1px solid #686363;
+  opacity: 0;
+}
+

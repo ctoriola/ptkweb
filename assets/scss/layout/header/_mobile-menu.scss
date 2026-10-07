@@ -1,0 +1,109 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.1 Main menu css
+/*----------------------------------------*/
+
+.th-offcanvas-menu{
+    ul {
+        list-style: none;
+        & li{
+            position: relative;
+            & a{
+                padding: 8px 0;
+                display: block;
+                font-size: 16px;
+                font-weight: 500;
+                & span.menu-dwn-arrow{
+                    display: none; 
+                }
+            }
+            & > a{
+                border-bottom: 1px solid rgba(1, 15, 28, 0.1);
+            }
+            &.active{
+                & > a{
+                    color: var(--primary-color);
+                }
+                & > .th-menu-close{
+                    border-bottom:var(--th-theme-color);
+                    color: var(--white-color);
+                    background: var(--black-bg);
+                    & i{
+                        transform: rotate(90deg);
+                        // @include transform(rotate(90deg));
+                    }
+                }
+            }
+
+            & .sub-menu{
+                display: none;
+                padding-left: 20px;
+                & ul{
+                    & li{
+                        & a{
+                            &:hover{
+                                color: var(--th-border-1);    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-2{
+       ul {
+        & li{
+            & a{
+                & span.menu-dwn-arrow{
+                    display: none; 
+                }
+            }
+            &.active{
+                & > a{
+                    color: #D72CF1;
+                }
+                & > .th-menu-close{
+                    background: #D72CF1;
+                    & i{
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+
+            & .sub-menu{
+                & ul{
+                    & li{
+                        & a{
+                            &:hover{
+                                color: #D72CF1;    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
+    }
+}
+
+// .th-offcanvas-menu ul li .sub-menu{
+//     display: none;
+// }
+
+.th-menu-close{
+    position: absolute;
+    right: 0;
+    top: 7px;
+    border: 1px solid rgba(1, 15, 28, 0.12);
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+    border-radius: 4px;
+    & i{
+        transition: .3s;
+        // @include transition(.3s);
+    }
+}

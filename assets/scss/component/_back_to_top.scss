@@ -1,0 +1,111 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.1 Back to top 
+/*----------------------------------------*/
+.progress-wrap {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 200ms linear;
+  } 
+  
+  .progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    z-index: 999;
+  }
+  
+  .progress-wrap{
+    &::after {
+      position: absolute;
+      font-family: "FontAwesome";
+      content: "\f062";
+      text-align: center;
+      line-height: 56px;
+      font-size: 18px;
+      color:var(--primary-color);
+      left: 0;
+      top: 0;
+      height: 56px;
+      width: 56px;
+      cursor: pointer;
+      display: block;
+      z-index: 1;
+      transition: all 200ms linear;
+    }
+    &-2{
+      &::after{
+       color:var(--primary-color-2);
+      }
+    }
+    &-3{
+      &::after{
+        color:var(--primary-color-3);
+      }
+    }
+  }
+  
+
+  
+  .progress-wrap::before {
+    position: absolute;
+    font-family: "FontAwesome";
+    content: "\f062";
+    text-align: center;
+    line-height: 56px;
+    font-size: 18px;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    height: 56px;
+    width: 56px;
+    cursor: pointer;
+    display: block;
+    z-index: 2;
+    transition: all 200ms linear;
+  }
+  
+  .progress-wrap:hover::before {
+    opacity: 1;
+  }
+  
+  .progress-wrap svg path {
+    fill: none;
+  }
+  
+  .progress-wrap{
+      svg.progress-circle path {
+      stroke:var(--primary-color);
+      stroke-width: 4;
+      box-sizing: border-box;
+      transition: all 200ms linear;
+    }
+    &-2{
+        svg.progress-circle path {
+        stroke:var(--primary-color-2);
+        stroke-width: 4;
+        box-sizing: border-box;
+        transition: all 200ms linear;
+      }
+    }
+    &-3{
+        svg.progress-circle path {
+        stroke:var(--primary-color-3);
+        stroke-width: 4;
+        box-sizing: border-box;
+        transition: all 200ms linear;
+      }
+    }
+  }
