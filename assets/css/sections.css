@@ -384,3 +384,196 @@ html {
     height: 420px;
   }
 }
+
+/* ---------- Performance & accessibility fixes ---------- */
+/* Page texture: a small repeating tile on <body> instead of a 1920x8797 image
+   on <main> (which made the background the page's Largest Contentful Paint). */
+body {
+  background: #121212 url("../img/designer/th-noise-tile.webp") repeat;
+  background-size: 480px 480px;
+}
+.th-designer-bg {
+  background: none;
+}
+/* "YEARS" under the hero counter (was an out-of-order <h4>) */
+.th-years-label {
+  margin: 0;
+  font-family: var(--th-fonts-Inter);
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+/* Slider numbers: brand orange with dark text passes WCAG contrast */
+.th-num1.th-active {
+  background: var(--primary-color);
+  color: #0e0e0e;
+  font-weight: 700;
+}
+/* Slider dots: enough spacing for a finger (24px target) */
+.swiper-pagination-bullet {
+  margin: 0 9px !important;
+}
+
+/* Glow positions are in px (not %) so they don't move while the full CSS loads.
+   Hero / page-header backgrounds drawn in CSS (they were large images that
+   became the Largest Contentful Paint). Dark base, faint 192px grid, orange glows. */
+.pt-glow-hero,
+.pt-glow-header {
+  background-color: #0e0e0e;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+}
+.pt-glow-hero {
+  background-image:
+    radial-gradient(circle 231px at 86% 440px, rgba(239, 91, 0, 0.42) 0, rgba(239, 91, 0, 0.18) 47%, rgba(239, 91, 0, 0) 100%),
+    radial-gradient(circle 796px at 0% 680px, rgba(239, 91, 0, 0.12) 0, rgba(239, 91, 0, 0.05) 56%, rgba(239, 91, 0, 0) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 192px 192px, 192px 160px;
+}
+.pt-glow-header {
+  background-image:
+    radial-gradient(circle at 94% 45%, rgba(239, 91, 0, 0.32) 0, rgba(239, 91, 0, 0.12) 9%, rgba(239, 91, 0, 0) 20%),
+    radial-gradient(circle at 0% 100%, rgba(239, 91, 0, 0.16) 0, rgba(239, 91, 0, 0.06) 22%, rgba(239, 91, 0, 0) 38%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 192px 192px, 192px 160px;
+}
+@media (max-width: 1199px) { /* phones & tablets: quieter glow */
+  .pt-glow-hero {
+    background-image:
+      radial-gradient(circle 300px at 100% 360px, rgba(239, 91, 0, 0.14) 0, rgba(239, 91, 0, 0.05) 50%, rgba(239, 91, 0, 0) 100%),
+      radial-gradient(circle 500px at 0% 1000px, rgba(239, 91, 0, 0.06) 0, rgba(239, 91, 0, 0) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 96px 96px, 96px 80px;
+  }
+}
+
+/* Photo page headers (About, Services): a real <img> with responsive sizes
+   instead of a CSS background, so phones get a small file early. */
+.pt-photo-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.pt-photo-header-img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+}
+/* former headings, now paragraphs: keep their original spacing */
+.th-service-icnbox-content .th-right-title,
+.th-servie-sm-content p.th-para {
+  margin: 0;
+}
+/* slider numbers: switch state instantly (a fading state fails contrast mid-way) */
+.th-num1 {
+  transition: none;
+}
+
+/* ---------- Home hero on phones & tablets (below 1200px) ---------- */
+@keyframes pt-spin { to { transform: rotate(360deg); } }
+@media (max-width: 1199px) {
+  .pt-glow-hero { overflow: hidden; }
+  .th-banner-area-1 .th-banner-content-wrapper { position: relative; z-index: 1; }
+
+  .th-banner-area-1 .th-banner-content .th-subtitle {
+    padding: 0;
+    background: none;
+  }
+
+  /* buttons: full width, label centred */
+  .th-banner-area-1 .th-banner-btn-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    max-width: 460px;
+  }
+  .th-banner-area-1 .th-banner-btn-wrap .th-primary-btn {
+    display: flex;
+  }
+  .th-banner-area-1 .th-banner-btn-wrap .th-primary-btn .th-text {
+    flex: 1;
+    text-align: center;
+  }
+
+  /* photo card with the rotating badge on its corner */
+  .pt-hero-media {
+    position: relative;
+    margin: 0 0 36px;
+    max-width: 690px;
+  }
+  .pt-hero-media-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid rgba(239, 91, 0, 0.55);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  }
+  .pt-hero-media::after { /* subtle bottom fade so the badge reads */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(180deg, transparent 55%, rgba(14, 14, 14, 0.55));
+    pointer-events: none;
+  }
+  .pt-hero-badge {
+    position: absolute;
+    right: 14px;
+    bottom: -30px;
+    z-index: 1;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: #0e0e0e;
+    border: 1px solid rgba(239, 91, 0, 0.45);
+    display: grid;
+    place-items: center;
+  }
+  .pt-hero-badge-ring {
+    position: absolute;
+    inset: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px) !important;
+    animation: pt-spin 16s linear infinite;
+  }
+  .pt-hero-badge-mark {
+    width: 26px;
+  }
+
+  /* 14 YEARS + PrimeTEK SSC as one card */
+  .th-banner-area-1 .th-auth-boxflex {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 14px 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #2a2a2a;
+    border-radius: 18px;
+    background: rgba(18, 18, 18, 0.72);
+  }
+  .th-banner-area-1 .th-auth-ratingbox {
+    margin: 0;
+    padding: 0 20px 0 0;
+    border-right: 1px solid #383838;
+    text-align: center;
+  }
+  .th-banner-area-1 .th-auth-ratingbox .title { font-size: 46px; line-height: 1; }
+  .th-banner-area-1 .th-years-label { font-size: 13px; letter-spacing: 0.2em; margin-top: 4px; }
+  .th-banner-area-1 .th-authbox { display: contents; }
+  .th-banner-area-1 .th-authbox-flex { margin: 0 !important; }
+  .th-banner-area-1 .th-authbox .th-desc { grid-column: 1 / -1; margin: 0; padding-top: 14px; border-top: 1px solid #262626; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-hero-badge-ring { animation: none; }
+}
