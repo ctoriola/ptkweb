@@ -33,43 +33,39 @@
   /* ================================
         01. stiky js
     ================================ */
-  var windowOn = $(window);
-  windowOn.on('scroll', function () {
-    var scroll = windowOn.scrollTop();
-    if (scroll < 100) {
-      $('.th-header-sticky').removeClass('header-sticky');
-    } else {
-      $('.th-header-sticky').addClass('header-sticky');
-    }
-  });
-
-  /* ================================
-        02. back-to-top
-    ================================ */
+  // One passive scroll listener, batched per animation frame: read layout first,
+  // then write classes/styles (avoids the forced reflows of separate handlers).
+  var header = document.querySelector('.th-header-sticky');
+  var progressWrap = document.querySelector('.progress-wrap');
   var progressPath = document.querySelector('.progress-wrap path');
-  var pathLength = progressPath.getTotalLength();
-  progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-  progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-  progressPath.style.strokeDashoffset = pathLength;
-  progressPath.getBoundingClientRect();
-  progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
-  var updateProgress = function () {
-    var scroll = $(window).scrollTop();
-    var height = $(document).height() - $(window).height();
-    var progress = pathLength - (scroll * pathLength) / height;
-    progressPath.style.strokeDashoffset = progress;
+  var pathLength = progressPath ? progressPath.getTotalLength() : 0;
+  if (progressPath) {
+    progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+    progressPath.style.strokeDashoffset = pathLength;
+  }
+  var scrollable = 1;
+  var measure = function () {
+    scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   };
-  updateProgress();
-  $(window).scroll(updateProgress);
-  var offset = 50;
+  var ticking = false;
+  var onScroll = function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY;
+      if (header) header.classList.toggle('header-sticky', y >= 100);
+      if (progressWrap) progressWrap.classList.toggle('active-progress', y > 50);
+      if (progressPath) progressPath.style.strokeDashoffset = pathLength - (y * pathLength) / scrollable;
+      ticking = false;
+    });
+  };
+  measure();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { measure(); onScroll(); }, { passive: true });
+  window.addEventListener('load', measure);
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(document.body);
+  onScroll();
   var duration = 550;
-  jQuery(window).on('scroll', function () {
-    if (jQuery(this).scrollTop() > offset) {
-      jQuery('.progress-wrap').addClass('active-progress');
-    } else {
-      jQuery('.progress-wrap').removeClass('active-progress');
-    }
-  });
   jQuery('.progress-wrap').on('click', function (event) {
     event.preventDefault();
     jQuery('html, body').animate({ scrollTop: 0 }, duration);
