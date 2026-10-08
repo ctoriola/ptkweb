@@ -1,0 +1,386 @@
+/* ==========================================================
+   PrimeTEK custom sections (not from the template)
+   ========================================================== */
+
+/* ---------- Header: always sticky (no jump when scrolling) ---------- */
+html {
+  scroll-padding-top: 120px; /* in-page links land below the header */
+}
+.th-header-sticky,
+.th-header-sticky.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  animation: none;
+}
+.th-header-sticky.header-sticky {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Capability index (about section) ---------- */
+.pt-pillars {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  counter-reset: none;
+}
+.pt-pillar {
+  border-top: 1px solid #2a2a2a;
+}
+.pt-pillar:last-child {
+  border-bottom: 1px solid #2a2a2a;
+}
+.pt-pillar-link {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 64px 1fr 56px;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 16px;
+  color: inherit;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* orange sweep on hover */
+.pt-pillar-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(239, 91, 0, 0.16), rgba(239, 91, 0, 0.02) 70%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pt-pillar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 2px;
+  width: 100%;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pt-pillar-num {
+  font-family: var(--th-fonts-Inter);
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(239, 91, 0, 0.75);
+  transition: color 0.3s, -webkit-text-stroke-color 0.3s;
+}
+.pt-pillar-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid #2f2f2f;
+  background: #161616;
+  color: var(--primary-color);
+  font-size: 26px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.pt-pillar-body {
+  display: block;
+  min-width: 0;
+}
+.pt-pillar-title {
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  transition: color 0.3s;
+}
+.pt-pillar-desc {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+.pt-pillar-arrow {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+  color: var(--secondary-color);
+  font-size: 18px;
+  transition: background 0.3s, border-color 0.3s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pt-pillar-link:hover::before,
+.pt-pillar-link:focus-visible::before,
+.pt-pillar-link:hover::after,
+.pt-pillar-link:focus-visible::after {
+  transform: scaleX(1);
+}
+.pt-pillar-link:hover .pt-pillar-num,
+.pt-pillar-link:focus-visible .pt-pillar-num {
+  color: var(--primary-color);
+}
+.pt-pillar-link:hover .pt-pillar-icon,
+.pt-pillar-link:focus-visible .pt-pillar-icon {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+.pt-pillar-link:hover .pt-pillar-title,
+.pt-pillar-link:focus-visible .pt-pillar-title {
+  color: var(--primary-color);
+}
+.pt-pillar-link:hover .pt-pillar-arrow,
+.pt-pillar-link:focus-visible .pt-pillar-arrow {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateX(6px) rotate(-45deg);
+}
+.pt-pillar-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+@media (max-width: 767px) {
+  .pt-pillar-link {
+    grid-template-columns: 44px 1fr 40px;
+    gap: 14px;
+    padding: 22px 4px;
+  }
+  .pt-pillar-icon {
+    display: none;
+  }
+  .pt-pillar-num {
+    font-size: 30px;
+  }
+  .pt-pillar-title {
+    font-size: 19px;
+    line-height: 26px;
+  }
+  .pt-pillar-desc {
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .pt-pillar-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- Operational standards console ---------- */
+.pt-console {
+  position: relative;
+  border: 1px solid #2c2c2c;
+  border-radius: 20px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(239, 91, 0, 0.10), transparent 55%),
+    linear-gradient(180deg, #151515, #0f0f0f);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+/* faint scan lines */
+.pt-console::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 4px);
+}
+.pt-console-head {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 28px;
+  border-bottom: 1px solid #262626;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8d8a87;
+}
+.pt-console-id {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.pt-console-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  box-shadow: 0 0 0 0 rgba(239, 91, 0, 0.6);
+  animation: pt-pulse 2s infinite;
+}
+.pt-console-status {
+  color: var(--primary-color);
+}
+@keyframes pt-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 91, 0, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 91, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 91, 0, 0); }
+}
+.pt-console-rows {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 8px 28px 16px;
+}
+.pt-meter {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1.1fr) minmax(0, 1.4fr) 76px 88px;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px dashed #262626;
+}
+.pt-meter:last-child {
+  border-bottom: 0;
+}
+.pt-meter-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(239, 91, 0, 0.1);
+  color: var(--primary-color);
+  font-size: 20px;
+}
+.pt-meter-label {
+  display: block;
+  font-family: var(--th-fonts-Inter);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+.pt-meter-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #8d8a87;
+}
+/* segmented gauge */
+.pt-meter-bar {
+  position: relative;
+  display: block;
+  height: 14px;
+  --seg: repeating-linear-gradient(90deg, #000 0 calc(5% - 3px), transparent calc(5% - 3px) 5%);
+  -webkit-mask: var(--seg);
+  mask: var(--seg);
+  background: #2a2a2a;
+}
+.pt-meter-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #b84300, var(--primary-color) 60%, #ff8a3d);
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.pt-meter-value {
+  font-family: var(--th-fonts-Inter);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--secondary-color);
+  text-align: right;
+  font-variant-numeric: tabular-nums; /* digits don't change width while counting */
+  white-space: nowrap;
+}
+.pt-meter-tag {
+  justify-self: end;
+  padding: 6px 10px;
+  border: 1px solid rgba(239, 91, 0, 0.5);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+/* animation: only when JS is running, and only once the console is on screen */
+.pt-console.is-armed .pt-meter-fill {
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i) * 0.18s + 0.15s);
+}
+.pt-console.is-armed .pt-meter-tag {
+  opacity: 0;
+  transition: opacity 0.4s;
+  transition-delay: calc(var(--i) * 0.18s + 1.3s);
+}
+.pt-console.is-live .pt-meter-fill {
+  transform: scaleX(1);
+}
+.pt-console.is-live .pt-meter-tag {
+  opacity: 1;
+}
+@media (max-width: 991px) {
+  .pt-meter {
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "icon text value"
+      "bar  bar  tag";
+    gap: 12px 16px;
+  }
+  .pt-meter-icon { grid-area: icon; width: 44px; height: 44px; }
+  .pt-meter-text { grid-area: text; }
+  .pt-meter-value { grid-area: value; font-size: 26px; }
+  .pt-meter-bar { grid-area: bar; }
+  .pt-meter-tag { grid-area: tag; }
+}
+@media (max-width: 575px) {
+  .pt-console-head { padding: 14px 18px; font-size: 10px; }
+  .pt-console-rows { padding: 4px 18px 10px; }
+  .pt-meter-label { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pt-console-dot { animation: none; }
+  .pt-console.is-armed .pt-meter-fill,
+  .pt-console.is-armed .pt-meter-tag { transition: none; }
+  .pt-pillar-link::before,
+  .pt-pillar-link::after,
+  .pt-pillar-arrow { transition: none; }
+}
+
+/* Counters: reserve the final width so counting never moves anything */
+.th-auth-ratingbox .count,
+.th-exp-title .count {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.pt-meter-num {
+  display: inline-block;
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* Gallery slider: the template staggered slide heights with :nth-child,
+   which flips every time the looping slider reorders its slides, so the
+   section (and the page below it) jumped every few seconds. Tie the height
+   to the slide itself instead, and don't animate it. */
+.th-work-Swiper .th-portfolio-slide-wrapper .th-portfolio-slide-img img {
+  height: 429px;
+  transition: transform 0.6s ease;
+}
+.th-work-Swiper .th-portfolio-slide-wrapper[data-swiper-slide-index="1"] .th-portfolio-slide-img img,
+.th-work-Swiper .th-portfolio-slide-wrapper[data-swiper-slide-index="3"] .th-portfolio-slide-img img,
+.th-work-Swiper .th-portfolio-slide-wrapper[data-swiper-slide-index="5"] .th-portfolio-slide-img img {
+  height: 557px;
+}
+@media (max-width: 767px) {
+  .th-work-Swiper .th-portfolio-slide-wrapper .th-portfolio-slide-img img,
+  .th-work-Swiper .th-portfolio-slide-wrapper[data-swiper-slide-index] .th-portfolio-slide-img img {
+    height: 420px;
+  }
+}

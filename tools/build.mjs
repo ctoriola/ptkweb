@@ -39,6 +39,7 @@ const CSS = [
   { file: 'assets/css/aos.css' },
   { file: 'assets/css/fontawesome-subset.css' },
   { file: 'assets/css/style.css', purge: true },
+  { file: 'assets/css/sections.css' },
 ];
 
 const hash = (s) => createHash('sha256').update(s).digest('hex').slice(0, 10);

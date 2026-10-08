@@ -636,6 +636,40 @@ document.querySelectorAll(".th-num1").forEach((btn)=>{
 });
 
 
+
+  /* ================================
+      Operational standards console:
+      fill the gauges and count up once, when it scrolls into view
+  ================================ */
+  document.querySelectorAll('.pt-console').forEach(function (consoleEl) {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var nums = consoleEl.querySelectorAll('.pt-meter-num');
+    consoleEl.classList.add('is-armed');
+    nums.forEach(function (n) { n.textContent = '0'; });
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      // let the armed (empty) state paint before starting the transition
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { consoleEl.classList.add('is-live'); });
+      });
+      nums.forEach(function (n, i) {
+        var target = +n.getAttribute('data-target') || 100;
+        var delay = i * 180 + 150, dur = 1400, start = null;
+        setTimeout(function () {
+          (function tick(t) {
+            if (start === null) start = t;
+            var k = Math.min((t - start) / dur, 1);
+            n.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+            if (k < 1) requestAnimationFrame(tick);
+          })(performance.now());
+        }, delay);
+      });
+    }, { threshold: 0.35 });
+    io.observe(consoleEl);
+  });
+
 })(jQuery);
 
 
