@@ -384,3 +384,92 @@ html {
     height: 420px;
   }
 }
+
+/* ---------- Performance & accessibility fixes ---------- */
+/* Page texture: a small repeating tile on <body> instead of a 1920x8797 image
+   on <main> (which made the background the page's Largest Contentful Paint). */
+body {
+  background: #121212 url("../img/designer/th-noise-tile.webp") repeat;
+  background-size: 480px 480px;
+}
+.th-designer-bg {
+  background: none;
+}
+/* "YEARS" under the hero counter (was an out-of-order <h4>) */
+.th-years-label {
+  margin: 0;
+  font-family: var(--th-fonts-Inter);
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+/* Slider numbers: brand orange with dark text passes WCAG contrast */
+.th-num1.th-active {
+  background: var(--primary-color);
+  color: #0e0e0e;
+  font-weight: 700;
+}
+/* Slider dots: enough spacing for a finger (24px target) */
+.swiper-pagination-bullet {
+  margin: 0 9px !important;
+}
+
+/* Hero / page-header backgrounds drawn in CSS (they were large images that
+   became the Largest Contentful Paint). Dark base, faint 192px grid, orange glows. */
+.pt-glow-hero,
+.pt-glow-header {
+  background-color: #0e0e0e;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+}
+.pt-glow-hero {
+  background-image:
+    radial-gradient(circle at 86% 44%, rgba(239, 91, 0, 0.42) 0, rgba(239, 91, 0, 0.18) 8%, rgba(239, 91, 0, 0) 17%),
+    radial-gradient(circle at 0% 68%, rgba(239, 91, 0, 0.12) 0, rgba(239, 91, 0, 0.05) 28%, rgba(239, 91, 0, 0) 50%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 192px 192px, 192px 160px;
+}
+.pt-glow-header {
+  background-image:
+    radial-gradient(circle at 94% 45%, rgba(239, 91, 0, 0.32) 0, rgba(239, 91, 0, 0.12) 9%, rgba(239, 91, 0, 0) 20%),
+    radial-gradient(circle at 0% 100%, rgba(239, 91, 0, 0.16) 0, rgba(239, 91, 0, 0.06) 22%, rgba(239, 91, 0, 0) 38%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 192px 192px, 192px 160px;
+}
+@media (max-width: 767px) {
+  .pt-glow-hero {
+    background-image:
+      radial-gradient(circle at 92% 30%, rgba(239, 91, 0, 0.38) 0, rgba(239, 91, 0, 0.14) 18%, rgba(239, 91, 0, 0) 38%),
+      radial-gradient(circle at 0% 80%, rgba(239, 91, 0, 0.12) 0, rgba(239, 91, 0, 0) 55%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 96px 96px, 96px 80px;
+  }
+}
+
+/* Photo page headers (About, Services): a real <img> with responsive sizes
+   instead of a CSS background, so phones get a small file early. */
+.pt-photo-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.pt-photo-header-img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+}
+/* former headings, now paragraphs: keep their original spacing */
+.th-service-icnbox-content .th-right-title,
+.th-servie-sm-content p.th-para {
+  margin: 0;
+}
+/* slider numbers: switch state instantly (a fading state fails contrast mid-way) */
+.th-num1 {
+  transition: none;
+}

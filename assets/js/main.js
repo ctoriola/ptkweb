@@ -18,6 +18,18 @@
 (function ($) {
   'use strict';
 
+  // The page script may run after DOMContentLoaded (it is started after first paint).
+  var whenReady = function (fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  };
+
+  // Each page only loads the libraries it uses (see tools/build.mjs).
+  // Pages without a slider get a no-op stand-in so the slider setup below is harmless.
+  var Swiper = window.Swiper || function () {
+    return { on: function () {}, slideToLoop: function () {} };
+  };
+
   /* ================================
         01. stiky js
     ================================ */
@@ -68,17 +80,7 @@
        03. Parallaxie
     ================================ */
 
-  var $window = $(window);
-  var $parallaxie = $('.parallaxie');
-
-  if ($parallaxie.length && $window.width() > 991) {
-    if ($window.width() > 768) {
-      $parallaxie.parallaxie({
-        speed: 0.55,
-        offset: 0,
-      });
-    }
-  }
+  // (removed: the parallax background effect; the page texture is now a CSS tile)
 
   /* ================================
         04. mobile menu 
@@ -121,7 +123,7 @@
   /* ================================
        05. Nice Select Js Start
     ================================ */
-  if ($('.single-select').length) {
+  if ($('.single-select').length && $.fn.niceSelect) {
     $('.single-select').niceSelect();
   }
 
@@ -129,14 +131,25 @@
   /*  09. Counter js
 /*----------------------------------------*/
 
- $(document).ready(function () {
-  if ($('.count').length > 0) {
-    $('.count').counterUp({
-      delay: 15,
-      time: 1500,
-    });
+  // Count up from 0 once each number scrolls into view (replaces jQuery counterUp + Waypoints)
+  var counters = document.querySelectorAll('.count');
+  if (counters.length && 'IntersectionObserver' in window &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var countIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        countIO.unobserve(entry.target);
+        var el = entry.target, target = parseInt(el.textContent, 10) || 0, start = null;
+        (function tick(t) {
+          if (start === null) start = t;
+          var k = Math.min((t - start) / 1500, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(tick);
+        })(performance.now());
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { countIO.observe(el); });
   }
-});
 
   /* ================================
        06. Mouse Cursor Animation
@@ -180,13 +193,13 @@
   /* ================================
 		07. popup image
 	================================ */
-  $('.popup-image').magnificPopup({
+  if ($.fn.magnificPopup) $('.popup-image').magnificPopup({
     type: 'image',
   });
   /* ================================
 		08. popup video
 	================================ */
-  $('.popup-video').magnificPopup({
+  if ($.fn.magnificPopup) $('.popup-video').magnificPopup({
     type: 'iframe',
   });
 
@@ -500,7 +513,7 @@
 
   // th-swiper pagination
 
-  document.addEventListener('DOMContentLoaded', function () {
+  whenReady(function () {
     const swiper = new Swiper('.premiumSwiper', {
       loop: true,
       speed: 1000,
@@ -535,7 +548,7 @@
 
   // priceing table
 
-  document.addEventListener('DOMContentLoaded', function () {
+  whenReady(function () {
     const toggle = document.getElementById('priceToggle');
     const prices = document.querySelectorAll('.th-price');
 

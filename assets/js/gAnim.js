@@ -11,6 +11,12 @@
 
 
 (function($){
+    // The page script may run after DOMContentLoaded (it is started after first paint).
+  var whenReady = function (fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  };
+
     "use strict";
 
 /*----------------------------------------*/
@@ -146,7 +152,7 @@ function initHeadingAnimation() {
 /*  02.image musking animation
 /*----------------------------------------*/  
     //image cliping effect
-    document.addEventListener("DOMContentLoaded", () => {
+    whenReady(() => {
         const initialClipPaths = [
             "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
             "polygon(33.33% 0%, 33.33% 0%, 33.33% 0%, 33.33% 0%)",

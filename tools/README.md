@@ -1,8 +1,8 @@
 # Build tools
 
-The pages load **one** stylesheet (`assets/css/bundle.min.css`) and **one**
-deferred script (`assets/js/bundle.min.js`). Both are generated — edit the
-source files, then rebuild:
+Each page loads **its own** stylesheet and script, containing only what that
+page uses (`assets/css/<page>.min.css`, `assets/js/<page>.min.js`). They are
+generated — edit the source files, then rebuild:
 
 ```sh
 cd tools
@@ -10,17 +10,27 @@ npm install      # first time only
 npm run build
 ```
 
-`build.mjs` concatenates, purges unused CSS and minifies, then stamps a
-content hash (`?v=…`) into every `.html` page so browsers cache the bundles
-long-term but always fetch a changed version.
+`build.mjs`:
+
+- picks the libraries each page needs from its HTML (Swiper for sliders,
+  Bootstrap for the FAQ accordion, GSAP for heading animations — see
+  `FEATURES` in the script), purges unused CSS and minifies;
+- inlines the page's **critical CSS** (what the first screen needs) and loads
+  the rest without blocking (`critical.mjs`; needs a Chromium — set
+  `CHROMIUM_PATH` if it isn't found, otherwise the page keeps a normal
+  stylesheet link);
+- stamps a content hash (`?v=…`) into each page, writes source maps.
+
+The page script starts right after the first paint (small inline loader in
+each page's `<head>`), so content never waits for JavaScript.
 
 - **CSS sources** (in order): `fonts.css`, `bootstrap.min.css`,
-  `magnific-popup.css`, `swiper-bundle.min.css`, `nice-select.css`, `aos.css`,
-  `fontawesome-subset.css`, `style.css`.
-- **JS sources**: listed in the `JS` array in `build.mjs`. Add a new script
-  there rather than a new `<script>` tag.
+  `swiper-bundle.min.css`, `aos.css`, `fontawesome-subset.css`, `style.css`,
+  `sections.css` (PrimeTEK's own sections and fixes).
+- **JS sources**: the `JS` array in `build.mjs`. `main.js` must keep working
+  when an optional library is absent.
 - If a class is only ever added by JavaScript and disappears after a build,
-  add it to the `safelist` in `build.mjs`.
+  add it to `SAFELIST` in `build.mjs`.
 
 ## Images
 
