@@ -438,11 +438,11 @@ body {
     linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 192px 192px, 192px 160px;
 }
-@media (max-width: 767px) {
+@media (max-width: 1199px) { /* phones & tablets: quieter glow */
   .pt-glow-hero {
     background-image:
-      radial-gradient(circle 360px at 92% 380px, rgba(239, 91, 0, 0.38) 0, rgba(239, 91, 0, 0.14) 47%, rgba(239, 91, 0, 0) 100%),
-      radial-gradient(circle 595px at 0% 1000px, rgba(239, 91, 0, 0.12) 0, rgba(239, 91, 0, 0) 100%),
+      radial-gradient(circle 300px at 100% 360px, rgba(239, 91, 0, 0.14) 0, rgba(239, 91, 0, 0.05) 50%, rgba(239, 91, 0, 0) 100%),
+      radial-gradient(circle 500px at 0% 1000px, rgba(239, 91, 0, 0.06) 0, rgba(239, 91, 0, 0) 100%),
       linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
       linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 96px 96px, 96px 80px;
@@ -477,54 +477,10 @@ body {
 
 /* ---------- Home hero on phones & tablets (below 1200px) ---------- */
 @keyframes pt-spin { to { transform: rotate(360deg); } }
-@keyframes pt-drift {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
-  50% { transform: translate3d(-18px, 26px, 0) scale(1.12); opacity: 0.6; }
-}
 @media (max-width: 1199px) {
   .pt-glow-hero { overflow: hidden; }
-  /* slow-drifting glow behind the content */
-  .pt-glow-hero::before {
-    content: "";
-    position: absolute;
-    top: 60px; /* px, not %: the hero's height changes while the full CSS loads */
-    right: -30%;
-    width: 90vw;
-    height: 90vw;
-    max-width: 640px;
-    max-height: 640px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(239, 91, 0, 0.30) 0, rgba(239, 91, 0, 0.10) 40%, transparent 70%);
-    pointer-events: none;
-    animation: pt-drift 9s ease-in-out infinite;
-    will-change: transform, opacity;
-  }
   .th-banner-area-1 .th-banner-content-wrapper { position: relative; z-index: 1; }
 
-  .pt-hero-chip {
-    display: flex;
-    width: max-content;
-    max-width: 100%;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 18px;
-    padding: 7px 14px;
-    border: 1px solid rgba(239, 91, 0, 0.35);
-    border-radius: 100px;
-    background: rgba(239, 91, 0, 0.08);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #f1c7ad;
-  }
-  .pt-hero-chip-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    animation: pt-pulse 2s infinite;
-  }
   .th-banner-area-1 .th-banner-content .th-subtitle {
     padding: 0;
     background: none;
@@ -560,7 +516,7 @@ body {
     object-fit: cover;
     border-radius: 20px;
     border: 1px solid rgba(239, 91, 0, 0.55);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(239, 91, 0, 0.06);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
   }
   .pt-hero-media::after { /* subtle bottom fade so the badge reads */
     content: "";
@@ -619,5 +575,5 @@ body {
   .th-banner-area-1 .th-authbox .th-desc { grid-column: 1 / -1; margin: 0; padding-top: 14px; border-top: 1px solid #262626; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pt-glow-hero::before, .pt-hero-badge-ring, .pt-hero-chip-dot { animation: none; }
+  .pt-hero-badge-ring { animation: none; }
 }
